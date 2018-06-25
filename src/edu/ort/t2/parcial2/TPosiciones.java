@@ -24,6 +24,8 @@ public class TPosiciones {
 	}
 	// b) carga el array de equipos, tipos de puntajes y puntajes
 	public void cargarData() {
+		equipos = new String[5];
+		puntajes = new String[5];
 		//equipos
 		equipos[0] = "barcelona";
 		equipos[1] = "real madrid";
@@ -44,6 +46,13 @@ public class TPosiciones {
 								  {5,5,5,25,30},
 								  {8,4,3,28,20},
 								  {3,5,7,15,48}};
+								  
+								  for(int x=0; x < resultados.length; x++) {
+									  for(int y=0; y < resultados[x].length; y++) {
+										  System.out.print(" " + resultados[x][y] + " ");
+									  }
+									  System.out.println("\n");
+								  }
 	}
 	// c)carga el arraylist con los equipos y sus datos(puntaje, goles a favor y en contra) 
 	public void procesarInfo(int cantidad) {
