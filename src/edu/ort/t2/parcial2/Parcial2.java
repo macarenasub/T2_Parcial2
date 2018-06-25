@@ -16,7 +16,6 @@ public class Parcial2 {
 		System.out.println("Resultado final campeonato");
 		
 		
-
 		String nombre = "";
 		boolean ok = false;
 		do {

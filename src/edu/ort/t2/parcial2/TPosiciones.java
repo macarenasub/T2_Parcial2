@@ -58,15 +58,28 @@ public class TPosiciones {
 	public void procesarInfo(int cantidad) {
 		datos = new ArrayList<Equipo>(cantidad);
 		for (int i=0; i < equipos.length; i++) {
-			Equipo p = new Equipo(equipos[i]);
-			
-			for (int j=0; j < resultados[i].length; j++) {
-				p.setPuntos(resultados[i][0] * 3 + resultados[i][1]);
-				p.setGoles_favor(resultados[i][3]);
-				p.setGoles_contra(resultados[i][4]);
+			Equipo p;
+			try {
+				p = new Equipo(equipos[i]);
+				for (int j=0; j < resultados[i].length; j++) {
+					p.setPuntos(this.calcularPuntos(resultados[i]));
+					p.setGoles_favor(resultados[i][3]);
+					p.setGoles_contra(resultados[i][4]);
+				}
+				datos.add(p);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
 			}
-			datos.add(p);
 		}
+	}
+	private int calcularPuntos(int[] resultados) {
+		int puntos = 0;
+		
+		puntos += resultados[0] * 3; // Ganados
+		
+		puntos += resultados[1];// Empatados
+		
+		return puntos;
 	}
 	// d) busque de un equipo enviado por par�metro el resultado de todos los puntajes del campeonato 
 	// y lo retorne en un string con el nombre del equipo y los puntos por Gana,Empa, Perd,Gfav y GCon. 

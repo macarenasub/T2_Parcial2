@@ -1,7 +1,5 @@
 package edu.ort.t2.parcial2;
 
-import java.util.NoSuchElementException;
-
 public class Equipo {
 
 
@@ -11,13 +9,10 @@ public class Equipo {
     private int goles_contra;// cantidad de goles en contra al final delcampeonato
     
     // a) debe validar que el nombre no sea null o vacio
-    public Equipo(String nombre)   {
-    	try{
-    		this.nombre = nombre;
-    	}catch(Exception e){
-    		System.out.println(e.getMessage());
-    	}
-    	
+    public Equipo(String nombre) throws Exception   {
+    	if(nombre == null || nombre == "") {
+    		throw new Exception("El nombre es invalido.");
+    	}    	
     }
     public String getNombre() {
         return nombre;
