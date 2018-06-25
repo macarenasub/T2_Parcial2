@@ -34,11 +34,11 @@ public class TPosiciones {
 		equipos[4] = "villareal";
 		
 		//puntajes
-		puntajes[0] = "Gana";
-		puntajes[1] = "Empa";
-		puntajes[2] = "Perd";
-		puntajes[3] = "GFav";
-		puntajes[4] = "Gcon";
+		puntajes[0] = "Gan";
+		puntajes[1] = "Emp";
+		puntajes[2] = "Per";
+		puntajes[3] = "GFa";
+		puntajes[4] = "GCon";
 		
 		//resultados
 		resultados = new int[][] {{10,4,1,50,10},
@@ -94,6 +94,8 @@ public class TPosiciones {
 					" Perd: " + resultados[posEquipo][2] + 
 					" GolFav: " + resultados[posEquipo][3] + 
 					" GolCon: " + resultados[posEquipo][4];
+		}else{
+			r = "Sin resultados.";
 		}
 
 		return r;
@@ -109,31 +111,44 @@ public class TPosiciones {
 		}
 		return posEquipo;
 	}
+	
 	//e) busque para un equipo su puntaje de (Gan,Emp,Per GFav y GCon) enviado por par�metro y lo retorne en un string.	
 	public String procesarEquipo(String equipo, String puntaje) {
 		String r = "";
-		int posEquipo = -1;
-		int pospuntaje= -1; 		
+		int posEquipo = posicionEquipo(equipo);
+		int pospuntaje = -1;
 		
-		// Completar
-		
+		for(int i = 0; i < puntajes.length; i++){
+			if(puntajes[i].equals(puntaje)){
+				pospuntaje = i;
+			}
+			
+		}
+		if(posEquipo != -1 && pospuntaje != -1){
+		r = "Partidos " + puntajes[pospuntaje] + " del " + equipos[posEquipo] + ": " 
+		+ resultados[posEquipo][pospuntaje] ;
+		}else{
+			r = "Sin resultados.";
+		}
 		return r;
 	}
-	//f) devuelva el nombre del equipo campe�n
+	//f) devuelva el nombre del equipo campeon
 	public String procesarGanador() {
 		String r = "";
+		Equipo eq = null;
 		int max = 0;
 		for (int i = 0; i < datos.size(); i++) {
 			int puntaje = datos.get(i).getPuntos();
 			if (max < puntaje) {
 				max = puntaje;
-				r = datos.get(i).getNombre();
+				eq = datos.get(i);
+				r = eq.getNombre();
 			}
 		}
 
 		return r;
 	}
-	// muestra toda las tablas de datos
+	// muestra todas las tablas de datos
 	public void verTodo() {
 		System.out.print("\t\t");
 		for (int i = 0; i < puntajes.length; i++)

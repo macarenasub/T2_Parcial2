@@ -12,7 +12,11 @@ public class Equipo {
     public Equipo(String nombre) throws Exception   {
     	if(nombre == null || nombre == "") {
     		throw new Exception("El nombre es invalido.");
-    	}    	
+    	}
+    	setNombre(nombre);
+    }
+    public void setNombre(String nombre){
+    	this.nombre = nombre;
     }
     public String getNombre() {
         return nombre;

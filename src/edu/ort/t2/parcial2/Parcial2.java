@@ -27,10 +27,14 @@ public class Parcial2 {
 				input.nextLine();
 			}
 		} while (!ok);
+		
+		System.out.println(rd.procesarDatosEquipo(nombre));
 
-		// Completar System.out.println("\nResultados de "+nombre ... );
-		System.out.println("Partidos del real madrid " + rd.procesarEquipo("real madrid", "Gana"));
-		// Completar System.out.println("El ganador del campeonato fue:" ... );
+		System.out.println(rd.procesarEquipo(nombre, "Gan"));
+		
+		System.out.println(rd.procesarEquipo("real madrid", "Gan"));
+		
+		System.out.println("El ganador del campeonato fue: " + rd.procesarGanador());
 
 		input.close();
 
