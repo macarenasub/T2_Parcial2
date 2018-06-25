@@ -47,20 +47,20 @@ public class TPosiciones {
 								  {8,4,3,28,20},
 								  {3,5,7,15,48}};
 								  
-								  for(int x=0; x < resultados.length; x++) {
+								/*  for(int x=0; x < resultados.length; x++) {
 									  for(int y=0; y < resultados[x].length; y++) {
 										  System.out.print(" " + resultados[x][y] + " ");
 									  }
 									  System.out.println("\n");
-								  }
+								  }*/
 	}
 	// c)carga el arraylist con los equipos y sus datos(puntaje, goles a favor y en contra) 
 	public void procesarInfo(int cantidad) {
 		datos = new ArrayList<Equipo>(cantidad);
-		for (int i = 0; i < equipos.length; i++) {
-			String c = equipos[i];
-			Equipo p = new Equipo(c);
-			for (int j = 0; j < resultados[i].length; j++) {
+		for (int i=0; i < equipos.length; i++) {
+			Equipo p = new Equipo(equipos[i]);
+			
+			for (int j=0; j < resultados[i].length; j++) {
 				p.setPuntos(resultados[i][0] * 3 + resultados[i][1]);
 				p.setGoles_favor(resultados[i][3]);
 				p.setGoles_contra(resultados[i][4]);
