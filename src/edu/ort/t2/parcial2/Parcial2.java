@@ -18,22 +18,24 @@ public class Parcial2 {
 		String nombre = "";
 		boolean ok = false;
 		do {
-			try {
-				System.out.println("Ingrese el nombre del equipo: ");
-				nombre = input.next("\\D+");
-				ok = true;
-			} catch (NoSuchElementException e) {
+			ok = true;
+			System.out.println("Ingrese el nombre del equipo: ");
+			nombre = input.nextLine();
+			if (!nombre.matches("\\D+")) {
 				System.out.println("Error ingresar caracteres entre A-Z.");
-				input.nextLine();
+				ok = false;
 			}
+
 		} while (!ok);
 		
+		System.out.println(nombre);
+
 		System.out.println(rd.procesarDatosEquipo(nombre));
 
 		System.out.println(rd.procesarEquipo(nombre, "Gan"));
-		
+
 		System.out.println(rd.procesarEquipo("real madrid", "Gan"));
-		
+
 		System.out.println("El ganador del campeonato fue: " + rd.procesarGanador());
 
 		input.close();
