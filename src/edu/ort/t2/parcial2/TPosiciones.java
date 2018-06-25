@@ -85,10 +85,29 @@ public class TPosiciones {
 	// y lo retorne en un string con el nombre del equipo y los puntos por Gana,Empa, Perd,Gfav y GCon. 
 	public String procesarDatosEquipo(String equipo) {
 		String r = "";
-		int posEquipo = -1;
-		posEquipo = datos.indexOf(equipo);
+		int posEquipo = posicionEquipo(equipo);
 		
+		if (posEquipo != -1) {
+			r = "Resultados de " + equipos[posEquipo] + 
+					": Gan: " + resultados[posEquipo][0] + 
+					" Emp: " + resultados[posEquipo][1] + 
+					" Perd: " + resultados[posEquipo][2] + 
+					" GolFav: " + resultados[posEquipo][3] + 
+					" GolCon: " + resultados[posEquipo][4];
+		}
+
 		return r;
+	}
+	
+	public int posicionEquipo(String equipo){
+	int posEquipo = -1;
+		
+		for(int i = 0; i < equipos.length; i++){
+			if(equipos[i].equals(equipo)){
+				posEquipo = i;
+			}
+		}
+		return posEquipo;
 	}
 	//e) busque para un equipo su puntaje de (Gan,Emp,Per GFav y GCon) enviado por par�metro y lo retorne en un string.	
 	public String procesarEquipo(String equipo, String puntaje) {

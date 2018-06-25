@@ -14,13 +14,18 @@ public class Parcial2 {
 		rd.verTodo();
 
 		System.out.println("Resultado final campeonato");
-		
-		
+
 		String nombre = "";
 		boolean ok = false;
 		do {
-			System.out.println("Ingrese el nombre del equipo: ");
-			nombre = input.next();
+			try {
+				System.out.println("Ingrese el nombre del equipo: ");
+				nombre = input.next("\\D+");
+				ok = true;
+			} catch (NoSuchElementException e) {
+				System.out.println("Error ingresar caracteres entre A-Z.");
+				input.nextLine();
+			}
 		} while (!ok);
 
 		// Completar System.out.println("\nResultados de "+nombre ... );
@@ -31,4 +36,3 @@ public class Parcial2 {
 
 	}
 }
-
